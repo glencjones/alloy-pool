@@ -45,7 +45,7 @@ sudo systemctl start alloy
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 source ~/.nvm/nvm.sh
-nvm install v9.10.1
+nvm install v6.9.2
 cd ~/nodejs-pool
 npm install
 npm install -g pm2
@@ -85,7 +85,7 @@ sudo systemctl enable caddy.service
 sudo systemctl start caddy.service
 rm -rf $CADDY_DOWNLOAD_DIR
 cd ~
-sudo env PATH=$PATH:`pwd`/.nvm/versions/node/v9.10.1/bin `pwd`/.nvm/versions/node/v9.10.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $CURUSER --hp `pwd`
+sudo env PATH=$PATH:`pwd`/.nvm/versions/node/v6.9.2/bin `pwd`/.nvm/versions/node/v6.9.2/lib/node_modules/pm2/bin/pm2 startup systemd -u $CURUSER --hp `pwd`
 cd ~/nodejs-pool
 sudo chown -R $CURUSER. ~/.pm2
 echo "Installing pm2-logrotate in the background!"
@@ -96,6 +96,6 @@ sudo mysql -u root --password=$ROOT_SQL_PASS pool -e "INSERT INTO pool.config (m
 pm2 start init.js --name=api --log-date-format="YYYY-MM-DD HH:mm Z" -- --module=api
 bash ~/nodejs-pool/deployment/install_lmdb_tools.sh
 cd ~/nodejs-pool/sql_sync/
-env PATH=$PATH:`pwd`/.nvm/versions/node/v9.10.1/bin node sql_sync.js
+env PATH=$PATH:`pwd`/.nvm/versions/node/v6.9.2/bin node sql_sync.js
 echo "Your wallet passord is $WALLET_PASS. It will work for both pool and fee wallets. You can find the wallet addreses in simplewallet.log"
 echo "You're setup!  Please read the rest of the readme for the remainder of your setup and configuration.  These steps include: Setting your Fee Address, Pool Address, Global Domain, and the Mailgun setup!"
