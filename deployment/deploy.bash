@@ -17,7 +17,7 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again p
 echo -e "[client]\nuser=root\npassword=$ROOT_SQL_PASS" | sudo tee /root/.my.cnf
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install git python-virtualenv python3-virtualenv curl ntp build-essential screen cmake pkg-config libboost-all-dev libevent-dev libunbound-dev libminiupnpc-dev libunwind8-dev liblzma-dev libldns-dev libexpat1-dev libgtest-dev mysql-server lmdb-utils libzmq3-dev
 cd ~
-git clone https://github.com/alloyproject/alloy-pool.git nodejs-pool  # Change this depending on how the deployment goes.
+git clone https://github.com/swa74/alloy-pool.git nodejs-pool  # Change this depending on how the deployment goes.
 cd /usr/src/gtest
 sudo cmake .
 sudo make
@@ -96,6 +96,6 @@ sudo mysql -u root --password=$ROOT_SQL_PASS pool -e "INSERT INTO pool.config (m
 pm2 start init.js --name=api --log-date-format="YYYY-MM-DD HH:mm Z" -- --module=api
 bash ~/nodejs-pool/deployment/install_lmdb_tools.sh
 cd ~/nodejs-pool/sql_sync/
-env PATH=$PATH:`pwd`/.nvm/versions/node/v8.9.3/bin node sql_sync.js
+env PATH=$PATH:`pwd`/.nvm/versions/node/v9.10.1/bin node sql_sync.js
 echo "Your wallet passord is $WALLET_PASS. It will work for both pool and fee wallets. You can find the wallet addreses in simplewallet.log"
 echo "You're setup!  Please read the rest of the readme for the remainder of your setup and configuration.  These steps include: Setting your Fee Address, Pool Address, Global Domain, and the Mailgun setup!"
