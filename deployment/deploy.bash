@@ -24,6 +24,7 @@ sudo make
 sudo mv libg* /usr/lib/
 cd ~
 sudo systemctl enable ntp
+
 cd /usr/local/src
 sudo git clone https://github.com/alloyproject/alloy.git
 cd alloy
