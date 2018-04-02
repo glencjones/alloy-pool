@@ -42,9 +42,9 @@ sudo systemctl enable alloy
 sudo systemctl enable walletd
 sudo systemctl start alloy
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 source ~/.nvm/nvm.sh
-nvm install v8.9.3
+nvm install v9.10.1
 cd ~/nodejs-pool
 npm install
 npm install -g pm2
@@ -84,7 +84,7 @@ sudo systemctl enable caddy.service
 sudo systemctl start caddy.service
 rm -rf $CADDY_DOWNLOAD_DIR
 cd ~
-sudo env PATH=$PATH:`pwd`/.nvm/versions/node/v8.9.3/bin `pwd`/.nvm/versions/node/v8.9.3/lib/node_modules/pm2/bin/pm2 startup systemd -u $CURUSER --hp `pwd`
+sudo env PATH=$PATH:`pwd`/.nvm/versions/node/v9.10.1/bin `pwd`/.nvm/versions/node/v9.10.1/lib/node_modules/pm2/bin/pm2 startup systemd -u $CURUSER --hp `pwd`
 cd ~/nodejs-pool
 sudo chown -R $CURUSER. ~/.pm2
 echo "Installing pm2-logrotate in the background!"
